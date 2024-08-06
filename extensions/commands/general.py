@@ -20,8 +20,8 @@ class General(Cogs):
 
         return await ctx.reply(embed=embed)
  
-    @commands.hybrid_command(name="ping", description="查看Luminara的狀態", with_app_command=True)
-    async def ping(self, ctx: commands.Context):
+    @commands.hybrid_command(name="bot", description="查看Luminara的狀態", with_app_command=True)
+    async def bot(self, ctx: commands.Context):
         bot_uptime = datetime.now(timezone.utc) - self.bot.launch_time
         hours, remainder = divmod(int(bot_uptime.total_seconds()), 3600)
         minutes, seconds = divmod(remainder, 60)

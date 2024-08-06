@@ -23,8 +23,9 @@ class Tools(Cogs):
                 embed.description="IPv6"
         except ValueError:
             embed.description="Domains"
+            resolver =  Resolver()
             try:
-                query = await Resolver.resolve_name(query)
+                query = await resolver.resolve_name(query)
             except Exception as e:
                 return await ctx.send(f"Error: {e}")
         
@@ -42,6 +43,20 @@ class Tools(Cogs):
             embed.set_image(url="attachment://maps.jpg")
             
             return await ctx.send(embed=embed, file=image_file)
+        
+    @commands.hybrid_command(name="ping", description="Ping 一個目標", with_app_command=True)
+    async def ping(self, ctx: commands.Context, target: str):
+        embed=discord.Embed()
+        embed.timestamp=datetime.now()
+        embed.title=f"**{target}**"
+        embed.set_footer(text="Luminara")
+        embed.color=discord.Color.green()
+        
+        async with ctx.typing():
+            ping = await iptools.ping(target)
+            embed.add_field(name="Ping", value=f"{ping}ms", inline=True)
+            
+            return await ctx.send(embed=embed)
         
               
 async def setup(bot):

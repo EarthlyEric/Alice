@@ -1,5 +1,4 @@
 # -*- coding: UTF-8 -*-
-import asyncio
 import typing
 import discord
 import wavelink
@@ -278,6 +277,5 @@ class Music(Cogs):
 
         return await ctx.reply(embed=embed)
     
-                  
 async def setup(bot):
     await bot.add_cog(Music(bot))

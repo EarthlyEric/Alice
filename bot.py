@@ -10,7 +10,7 @@ import core.libs.bot as bot
 from core.libs.luminara_api import LuminaraAPI
 from core.config import config
 
-bot=bot.Bot()
+bot = bot.Bot()
 bot.remove_command("help")
 bot.launch_time=datetime.now(timezone.utc)
 
